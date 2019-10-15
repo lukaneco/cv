@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,79 +10,96 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <style>
-    #page-wrap { width: 300px; margin: 80px auto; }
+        #page-wrap {
+            width: 300px;
+            margin: 80px auto;
+        }
 
-    aside {
-    display: block;
-    position: relative;
-    margin: 40px 0;
-    }
+        aside {
+            display: block;
+            position: relative;
+            margin: 40px 0;
+        }
 
-    aside h3 {
-    font: bold 12px Sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0 0 10px 0;
-    line-height: 24px;
-    }
+        aside h3 {
+            font: bold 12px Sans-Serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: #369;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 0 0 10px 0;
+            line-height: 24px;
+        }
 
-    /* Class name via Modernizr */
-    .csstransforms aside {
-    border-left: 34px solid #369;
-    padding-left: 10px;
-    }
-    .csstransforms aside h3 {
-    /* Abs positioning makes it not take up vert space */
-    position: absolute;
-    top: 0;
-    left: 0;
+        /* Class name via Modernizr */
+        .csstransforms aside {
+            border-left: 34px solid #369;
+            padding-left: 10px;
+        }
 
-    /* Border is the new background */
-    background: none;
+        .csstransforms aside h3 {
+            /* Abs positioning makes it not take up vert space */
+            position: absolute;
+            top: 0;
+            left: 0;
 
-    /* Rotate from top left corner (not default) */
-    transform-origin: 0 0;
-    transform: rotate(90deg);
-    }
+            /* Border is the new background */
+            background: none;
 
-    
+            /* Rotate from top left corner (not default) */
+            transform-origin: 0 0;
+            transform: rotate(90deg);
+        }
     </style>
 
 
 
 </head>
+
 <body>
     <div id="page-wrap">
 
         <button id="fake">Toggle Browser Support</button>
-  
-          <aside>
+
+        <aside>
             <h3>Heading and stuff</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </aside>
-  
-      <aside>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+        </aside>
+
+        <aside>
             <h3>Heading and stuff</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </aside>
-  
-      </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+        </aside>
+
+    </div>
 
 
-      
-<script>
 
-        $("#fake").click(function() {
-          $("html").toggleClass("csstransforms");
+    <script>
+
+        $("#fake").click(function () {
+            $("html").toggleClass("csstransforms");
         });
-        
-        
-        </script>
-        
+
+
+    </script>
+
 </body>
+
 </html>
