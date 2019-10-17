@@ -9,33 +9,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="school-card.css">
+    <link rel="stylesheet" href="work-cards.css">
+
+
     <title>CV Luca Sain</title>
     <style>
-
-
-@font-face {
-	font-family: 'Conv_dealerplate_california';
-	src: url('fonts/dealerplate_california.eot');
-	src: local('☺'), url('fonts/dealerplate_california.woff') format('woff'), url('fonts/dealerplate_california.ttf') format('truetype'), url('fonts/dealerplate_california.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-        .logardo{
-            font-family:'Conv_dealerplate_california';
-        }
         .bannerLogo {
             padding-top: 10pt;
             height: 300px;
         }
-        .xd{
+
+        .xd {
             margin-top: -30pt;
         }
-        footer{
+
+        footer {
             background-color: gray;
             margin-bottom: 0rem !important;
 
         }
-        footer p{
+
+        footer p {
             background-color: gray;
             margin-bottom: 0rem !important;
 
@@ -43,10 +40,10 @@
     </style>
 </head>
 
-<body style="background-color: yellow;" >
+<body style="background-color: yellow;">
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-md-center">
-        <h1 class="col col-md-6 logardo">Luca Sain</h1>
+        <h1 class="col col-md-6">Luca Sain</h1>
 
         <!-- Cosas -->
         <ul class="navbar-nav">
@@ -71,7 +68,8 @@
     <div class="bannerLogo bg-success">
         <section class="row justify-content-md-center seccionPortada">
             <div class="col col-md-4">
-                <img class="mx-auto d-block rounded-circle" src="https://a12.t26.net/taringa/avatares/F/B/6/1/6/A/lukaneco/120x120_F79.jpg" alt="lukaneco">
+                <img class="mx-auto d-block rounded-circle"
+                    src="https://a12.t26.net/taringa/avatares/F/B/6/1/6/A/lukaneco/120x120_F79.jpg" alt="lukaneco">
                 <h1 class="text-center">
                     Curriculum Vitae
                 </h1>
@@ -91,11 +89,11 @@
             <section class="col col-md-12 bg-warning text-dark  ">
                 <div class="container row boxlayout xd">
 
-                    <div class="col col-md-6 mt-5">
-                        <img src="cv3/keanu.jpg" alt="">
+                    <div class="col col-md-5 mt-5">
+                        <img class="img-fluid" src="keanu.jpg" alt="">
                     </div>
 
-                    <div class="col col-md-6">
+                    <div class="col col-md-7">
                         <h2>Acerca de mi</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, potenti facilisi pulvinar quis
                             conubia vestibulum tempus, dictum per non curabitur aptent parturient. Torquent cum praesent
@@ -123,43 +121,221 @@
                 </div>
             </section>
 
-            <section class="col col-md-12 mt-5 bg-warning text-dark">
+            <section class="col col-md-12 mt-5 bg-warning text-dark row justify-content-around ">
                 <h2>Educacion</h2>
+                <!--
 
                 <div class="container row boxlayout">
 
-                    <div class="col col-md-6 mt-5">
-                        <div class="card">
-                            <h5 class="card-header-left">Featured</h5>
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col col-md-6">
+                        <div class="container row boxlayout">
+                            <div class="col col-md-2 bg-success test2">
+                                <h1 class="test">2018</h1>
                             </div>
-                        </div>
-
-                        <div class="card">
-                                <div class="card-header">2013 - 2018</div>
-                                <div class="card-body">ET N° 28 Republica Francesa</div>
-                                <div class="card-footer">Recibido con el titulo de tecnico en electronica</div>
+                            <div class="col col-md-8 bg-danger">
+                                <h1>Hola, soy el lado derecho</h1>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col col-md-6 mt-5">
-                        <div class="card">
-                            <div class="card-body">
-                                This is some text within a card body.
+                    <div class="col col-md-6">
+                        <div class="container row boxlayout">
+                            <div class="col col-md-2 bg-success test2">
+                                <h1 class="test">2018</h1>
+                            </div>
+                            <div class="col col-md-8 bg-danger">
+                                <h1>Hola, soy el lado derecho</h1>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                This is some text within a card body.
+                    </div>
+                </div>
+
+                -->
+
+                <div class="container row boxlayout mt-5 mb-5">
+
+
+                    <div class="col col-md-6">
+                        <div class="container row boxlayout">
+                            <div class=" card col col-md-1 bg-success test2">
+                                <h1 class="test card-text">2013-2018</h1>
+                            </div>
+                            <div class="card col col-md-8 bg-danger">
+                                <div class="card-body">
+                                    <h5 class="card-title">School Name</h5>
+                                    <p class="card-text">
+                                        Some data of this school
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-6">
+                        <div class="container row boxlayout">
+                            <div class=" card col col-md-1 bg-success test2">
+                                <h1 class="test card-text">2013-2018</h1>
+                            </div>
+                            <div class="card col col-md-8 bg-danger">
+                                <div class="card-body">
+                                    <h5 class="card-title">School Name</h5>
+                                    <p class="card-text">
+                                        Some data of this school
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+
+
+            <!--
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            -->
+
+
+            <section class="col col-md-12 mt-5 pb-5 bg-warning text-dark row justify-content-around ">
+
+                <h2 class="mt-5">Educacion</h2>
+
+                <div class="container card-text row boxlayout mt-5">
+                    <div class="col col-md-6">
+                        <div class="container row boxlayout">
+
+                            <div class=" test2 col col-md-2 bg-success">
+                                <h1 class="test card-text">2013-2018</h1>
+                            </div>
+
+                            <div class="col col-md-10 bg-dark">
+                                <div class="row bg-danger">
+                                    <h2>
+                                        School Name
+                                    </h2>
+                                </div>
+                                <div class="row bg-secondary">
+                                    <h2>
+                                        Some data of this school
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="container row boxlayout">
+
+                            <div class=" test2 col col-md-2 bg-success">
+                                <h1 class="test card-text">2013-2018</h1>
+                            </div>
+
+                            <div class="col col-md-10 bg-dark">
+                                <div class="row bg-danger">
+                                    <h2>
+                                        School Name
+                                    </h2>
+                                </div>
+                                <div class="row bg-secondary">
+                                    <h2>
+                                        Some data of this school
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </section>
+
+
+
+            <!--
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                -->
+
+
+            <section class="col col-md-12 mt-5 pb-5 bg-warning text-dark row justify-content-around ">
+                <h2 class="mt-5">Experiencia Laboral</h2>
+
+
+
+                <div class="container  row boxlayout mt-5">
+                    <div class="work_card col col-md-6">
+                        <div class="container row boxlayout">
+                            <div class="col col-md-8 bg-success">
+                                <img class="mt-3 mb-3img-fluid" src="panorama.png" alt="">
+                                <p class="">Some informarion about your position</p>
+                            </div>
+                            <div class="col col-md-4 bg-danger">
+                                <p>1999 - 1999</p>
+                            </div>
+                        </div>
+
+                        <div class="container row boxlayout">
+                            <div class="col col-md-12 bg-secondary">
+                                <p class="">Voluptatem tenetur occaecati aut eaque quasi ea rerum quisquam. Incidunt
+                                    nemo veniam eum
+                                    eveniet deserunt sit. Est id veritatis rerum ex earum sed. Sapiente architecto
+                                    suscipit ut id ab
+                                    laborum incidunt natus. Fuga aut nihil perferendis voluptas qui mollitia
+                                    consequuntur</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work_card col col-md-6">
+                        <div class="container row boxlayout">
+                            <div class="col col-md-8 bg-success">
+                                <img class="mt-3 mb-3img-fluid" src="Boehringer_Ingelheim_Logo.svg" alt="">
+                                <p class="">Some informarion about your position</p>
+                            </div>
+                            <div class="col col-md-4 bg-danger">
+                                <p>1999 - 1999</p>
+                            </div>
+                        </div>
+
+                        <div class="container row boxlayout">
+                            <div class="col col-md-12 bg-secondary">
+                                <p class="">Voluptatem tenetur occaecati aut eaque quasi ea rerum quisquam. Incidunt
+                                    nemo veniam eum
+                                    eveniet deserunt sit. Est id veritatis rerum ex earum sed. Sapiente architecto
+                                    suscipit ut id ab
+                                    laborum incidunt natus. Fuga aut nihil perferendis voluptas qui mollitia
+                                    consequuntur</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+            <!--
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
     </div>
