@@ -12,14 +12,27 @@
 
     margin-left: -50%;
                 left: 0;
-    */
-    margin-top: 65pt;
-    margin-left: -35%;
-    white-space: nowrap;
 
+
+
+                    margin-top: 65pt;
+    margin-left: -35%;
+    
+    
+
+    */
+
+    top: calc(50% - 10px);
+    left: calc(50% - 50px);
+    /*
+    white-space: nowrap;
+    */
 
 }
 
 .test2 {
     height: 200px;
 }
+
+
+
