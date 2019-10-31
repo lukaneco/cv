@@ -16,6 +16,22 @@
 
     <title>CV Luca Sain</title>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Staatliches|Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap');
+
+        h1 {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        #logoxd {
+            font-family: 'Staatliches', cursive;
+            color: white;
+            font-size: 50px;
+        }
+
         .bannerLogo {
             padding-top: 10pt;
             height: 300px;
@@ -51,19 +67,28 @@
             /*
     $color1: hsla(298%, 18%, 31%, 1);
     $color1: rgba(92, 65, 93, 1);
-    */      
+    */
             background-color: rgb(255, 255, 255);
             background-color: rgb(255, 255, 255, 1);
 
         }
+
+        .color_0_font {
+            color: rgb(255, 255, 255, 1);
+        }
+
         .color_1 {
             /*
     $color1: hsla(298%, 18%, 31%, 1);
     $color1: rgba(92, 65, 93, 1);
-    */      
+    */
             background-color: hsla(298, 18, 31, 1);
             background-color: rgb(92, 65, 93, 1);
 
+        }
+
+        .color_1_font {
+            color: rgb(92, 65, 93, 1);
         }
 
         .color_2 {
@@ -76,6 +101,10 @@
 
         }
 
+        .color_2_font {
+            color: rgb(57, 62, 65, 1);
+        }
+
         .color_3 {
             /*
     $color3: hsla(70%, 2%, 49%, 1);
@@ -83,6 +112,10 @@
     */
             background-color: hsla(70, 2, 49, 1);
             background-color: rgba(126, 127, 121, 1)
+        }
+
+        .color_2_font {
+            color: rgb(126, 127, 121, 1);
         }
 
 
@@ -95,6 +128,12 @@
             background-color: rgba(255, 252, 49, 1)
         }
 
+        .color_4_font {
+            color: rgb(255, 252, 49, 1);
+        }
+
+
+
         .color_5 {
             /*
     $color5: hsla(8%, 80%, 56%, 1);
@@ -102,6 +141,10 @@
     */
             background-color: hsla(8, 80, 56, 1);
             background-color: rgba(233, 79, 55, 1);
+        }
+
+        .color_5_font {
+            color: rgb(233, 79, 55, 1);
         }
     </style>
 </head>
@@ -111,7 +154,7 @@
         <div class="container">
     -->
     <nav class="navbar bg-dark navbar-dark justify-content-md-center">
-        <a class="col col-md-6">Luca Sain</a>
+        <a class="col col-md-6" id="logoxd">Luca Sain</a>
 
         <!-- Cosas -->
 
@@ -121,18 +164,18 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav navbar_gg">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cosa1</a>
+                    <a class="nav-link" href="#">Cosa 1</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cosa2</a>
+                    <a class="nav-link" href="#">Cosa 2</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cosa3</a>
+                    <a class="nav-link" href="#">Cosa 3</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cosa4</a>
+                    <a class="nav-link" href="#">Cosa 4</a>
                 </li>
             </ul>
         </div>
@@ -141,8 +184,7 @@
     <div class="bannerLogo color_5">
         <section class="row justify-content-md-center seccionPortada">
             <div class="col">
-                <img class="mx-auto d-block rounded-circle"
-                    src="https://a12.t26.net/taringa/avatares/F/B/6/1/6/A/lukaneco/120x120_F79.jpg" alt="lukaneco">
+                <img class="col-1 mx-auto d-block rounded-circle" src="foto_perfil.jpg" alt="lukaneco">
                 <h1 class="text-center">
                     Curriculum Vitae
                 </h1>
@@ -170,9 +212,44 @@
                             Acerca de mi
                         </h3>
                         <div class="row d-flex">
+
+
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="fotos/IMG_20191022_213157767.jpg"
+                                            alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="fotos/IMG_20191022_213226166.jpg"
+                                            alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="fotos/IMG_20191022_213235570.jpg"
+                                            alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                             <div class="col-md-4 p-3">
+
+
                                 <a href="">
-                                    <img class="rounded" src="keanu.jpg" alt="" style="max-width: 100%;" />
+                                    <img class="rounded" src="fotos/IMG_20191022_213157767.jpg" alt="" style="max-width: 100%;" />
                                 </a>
                             </div>
 
