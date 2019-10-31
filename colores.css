@@ -1,49 +1,89 @@
-/* Coolors Exported Palette - coolors.co/5c415d-393e41-7e7f79-fffc31-e94f37 */
-
-/* HSL */
 
 
-.color_1{
-    /*
+        /* Coolors Exported Palette - coolors.co/5c415d-393e41-7e7f79-fffc31-e94f37 */
+
+        /* HSL */
+
+        .color_0 {
+            /*
     $color1: hsla(298%, 18%, 31%, 1);
     $color1: rgba(92, 65, 93, 1);
     */
-    color: hsla(298, 18, 31, 1);
-    color: rgb(92, 65, 93, 1);
+            background-color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255, 1);
 
-}
-.color_2{
-    /*
+        }
+
+        .color_0_font {
+            color: rgb(255, 255, 255, 1);
+        }
+
+        .color_1 {
+            /*
+    $color1: hsla(298%, 18%, 31%, 1);
+    $color1: rgba(92, 65, 93, 1);
+    */
+            background-color: hsla(298, 18, 31, 1);
+            background-color: rgb(92, 65, 93, 1);
+
+        }
+
+        .color_1_font {
+            color: rgb(92, 65, 93, 1);
+        }
+
+        .color_2 {
+            /*
     $color2: hsla(203%, 7%, 24%, 1)
     $color2: rgba(57, 62, 65, 1);
     */
-    color: hsla(203, 7, 24, 1);
-    color: rgb(57, 62, 65, 1);
+            background-color: hsla(203, 7, 24, 1);
+            background-color: rgb(57, 62, 65, 1);
 
-}
-.color_3{
-    /*
+        }
+
+        .color_2_font {
+            color: rgb(57, 62, 65, 1);
+        }
+
+        .color_3 {
+            /*
     $color3: hsla(70%, 2%, 49%, 1);
     $color3: rgba(126, 127, 121, 1);
     */
-    color: hsla(70, 2, 49, 1);
-    color: rgba(126, 127, 121, 1)
-}
+            background-color: hsla(70, 2, 49, 1);
+            background-color: rgba(126, 127, 121, 1)
+        }
+
+        .color_3_font {
+            color: rgb(126, 127, 121, 1);
+        }
 
 
-.color_4{
-    /*
+        .color_4 {
+            /*
     $color4: hsla(59%, 100%, 60%, 1);
     $color4: rgba(255, 252, 49, 1);
     */
-    color: hsla(59, 100, 60, 1);
-    color: rgba(255, 252, 49, 1)
-}
-.color_5{
-    /*
+            background-color: hsla(59, 100, 60, 1);
+            background-color: rgba(255, 252, 49, 1)
+        }
+
+        .color_4_font {
+            color: rgb(255, 252, 49, 1);
+        }
+
+
+
+        .color_5 {
+            /*
     $color5: hsla(8%, 80%, 56%, 1);
     $color5: rgba(233, 79, 55, 1);
     */
-    color: hsla(8, 80, 56, 1);
-    color: rgba(233, 79, 55, 1);
-}
+            background-color: hsla(8, 80, 56, 1);
+            background-color: rgba(233, 79, 55, 1);
+        }
+
+        .color_5_font {
+            color: rgb(233, 79, 55, 1);
+        }
