@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        //https://api.github.com/users/lukaneco/repos?direction=desc&sort=updated&type=all&per_page=1000
+
+        function QueryToSQL(textToSeacrh_var, objectWithFilters) {
+            console.log("Going to send post request");
+            //var object = JSON.parse(objectWithFilters);
+            //QueryToSQL("asdasd",queryFilterToSQL)
+            /* Join elements of data array in object to a comma separated string */
+            //var value = object.data.join();
+
+            //var colorsCSV = JSON.stringify(objectWithFilters)
+            //var value = colorsCSV.data.join();
+            //var test1 = JSON.stringify(objectWithFilters).replace(',', ', ').replace('[', '').replace(']', '');
+            //var test2 = JSON.stringify(objectWithFilters).replace(',', ', ').replace('[', '').replace(']', '').replace(']', '');
+            var jsontransformed = transform(objectWithFilters)
+            console.log(jsontransformed);
+            //console.log(test1);
+
+            //columnNameVar = "ColumnValues"
+            //var myFilterObj = {}
+            var data = {
+                'getData': 'fromDB'
+            }
+            console.log(textToSeacrh_var)
+
+            if (textToSeacrh_var != '') {
+                //data['title'] = $('#title').val()
+                //textToSeacrh: textToSeacrh_var
+                data['textToSeacrh'] = textToSeacrh_var
+            }
+            if (jsontransformed.length > 2) {
+                //data['title'] = $('#title').val()
+                //textToSeacrh: textToSeacrh_var
+                data['filters'] = jsontransformed
+            }
+            /*
+            $.post('/ajax/update-something', data, function (response) {
+                $('#template').html(response);
+            });
+            */
+
+            console.log(data)
+            return $.ajax({
+                //url: "/test6/testpost.php",
+                url: $TheLinkToApi,
+                method: "post",
+                data,
+                //data: { getData: "fromDB", textToSeacrh: textToSeacrh_var, filters: jsontransformed },
+                success: function (data) {
+                    //myobjValues = JSON.parse(data)
+                    //console.log(myobjValues)
+                    //console.log(data)
+                    console.log("...")
+                    console.log(data)
+                    console.log("...")
+
+                    addResultToBoxes(data)
+                    //var obj = myobjValues
+                    FlagQueryToSQLFetched = true
+                }
+            });
+
+        }
+
+
+
+        var FlagColumnLookupNames = false
+
+        function ColumnLookupNames() {
+            //columnNameVar = "ColumnValues"
+            columnNameVar = "ColumnNames"
+            var myobjValues = {}
+            return $.ajax({
+                url: $TheLinkToApi,
+                method: "post",
+                data: { getData: columnNameVar },
+                success: function (data) {
+                    myobjValues = JSON.parse(data)
+                    //console.log(myobjValues)
+                    console.log(myobjValues)
+                    var obj = myobjValues
+                    FlagColumnLookupNames = true
+                }
+            });
+        }
+        function addBox(id, title, description) {
+            console.log("agregando school box")
+            //tothediv2 = '<div class=" row justify-content-between" id="' + uuidDelFiltro + '">'
+            schoolBoxDiv = '<div id="' + id + '" class="schoolCard">'
+            //console.log(tothediv2)
+            $('#DIO').append(
+
+                $(schoolBoxDiv).append(
+                    //$('<img src="https://images.unsplash.com/uploads/1413259835094dcdeb9d3/6e609595?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c82fb4e7054d9fb4211938bf9431ccdf&auto=format&fit=crop&w=1952&q=80" />'),
+                    $('<img src="https://dummyimage.com/600x400/e038e0/e038e0" />'),
+                    //$('<div class="mapouter"><div class="gmap_canvas"><iframe width="100%" id="gmap_canvas" src="https://maps.google.com/maps?q='+title+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>'),
+                    $('<h3>' + title + '</h3>'),
+                    $('<p>' + description + '</p>')
+                )
+
+            );
+            //addContentToFilters(uuidDelFiltro, myobj, "ColumnFilterDiv")
+        }
+
+
+        var myobjValues = {}
+
+        var myCurrentResult = []
+
+        function addResultToBoxes(jsonResponse) {
+            console.log("Remove the last results")
+
+            for (let index = 0; index < myCurrentResult.length; index++) {
+                $tempItem = myCurrentResult[index]
+                console.log("Removing: " + $tempItem)
+                functionToRemoveLabel($tempItem)
+            }
+            console.log(myCurrentResult)
+            myCurrentResult.length = 0
+            console.log("adding Results To Boxes")
+            //var toWork = JSON.parse(jsonResponse)
+            //var toWork = JSON.stringify(jsonResponse)
+            var toWork = JSON.parse(jsonResponse)
+
+            for (var i = 0; i < toWork.length; i++) {
+                $currentCue = toWork[i].CUE
+                console.log($currentCue);
+                myCurrentResult.push($currentCue)
+                addBox(toWork[i].CUE, toWork[i].Nombre, toWork[i].Domicilio)
+            }
+
+            //console.log(toWork[0]['Nombre'])
+            //addBox("12314","test title","test text")
+        }
+
+        function getRepos(user) {
+            $result = null;
+            $.ajax({
+                url: 'https://api.github.com/users/' + user + '/repos?direction=desc&sort=updated&type=all&per_page=1000',
+                success: function (respuesta) {
+                    console.log(respuesta);
+                    $result = respuesta;
+                    //$result = getRepos("lukaneco")
+                    return $result
+
+                },
+                error: function () {
+                    console.log("No se ha podido obtener la información");
+                }
+            });
+        }
+
+        $reponse = getRepos("lukaneco");
+        $reponse.forEach(element => {
+            console.log(element)
+        });
+  //$("#div1").append("<b>"+getRepos("lukaneco")+"</b>");
+    </script>
+</head>
+
+<body>
+
+    <div id="div1">
+        <h2>Let jQuery AJAX Change This Text</h2>
+    </div>
+
+    <button>Get External Content</button>
+
+</body>
+
+</html>
