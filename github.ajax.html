@@ -1,354 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Bootstrap Card</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Bootstrap Card</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  <script>
+    <script>
 
-    //https://api.github.com/users/lukaneco/repos?direction=desc&sort=updated&type=all&per_page=1000
+        //https://api.github.com/users/lukaneco/repos?direction=desc&sort=updated&type=all&per_page=1000
 
-    function QueryToSQL(textToSeacrh_var, objectWithFilters) {
-        console.log("Going to send post request");
-        //var object = JSON.parse(objectWithFilters);
-        //QueryToSQL("asdasd",queryFilterToSQL)
-        /* Join elements of data array in object to a comma separated string */
-        //var value = object.data.join();
+        function QueryToSQL(textToSeacrh_var, objectWithFilters) {
+            console.log("Going to send post request");
+            //var object = JSON.parse(objectWithFilters);
+            //QueryToSQL("asdasd",queryFilterToSQL)
+            /* Join elements of data array in object to a comma separated string */
+            //var value = object.data.join();
 
-        //var colorsCSV = JSON.stringify(objectWithFilters)
-        //var value = colorsCSV.data.join();
-        //var test1 = JSON.stringify(objectWithFilters).replace(',', ', ').replace('[', '').replace(']', '');
-        //var test2 = JSON.stringify(objectWithFilters).replace(',', ', ').replace('[', '').replace(']', '').replace(']', '');
-        var jsontransformed = transform(objectWithFilters)
-        console.log(jsontransformed);
-        //console.log(test1);
+            //var colorsCSV = JSON.stringify(objectWithFilters)
+            //var value = colorsCSV.data.join();
+            //var test1 = JSON.stringify(objectWithFilters).replace(',', ', ').replace('[', '').replace(']', '');
+            //var test2 = JSON.stringify(objectWithFilters).replace(',', ', ').replace('[', '').replace(']', '').replace(']', '');
+            var jsontransformed = transform(objectWithFilters)
+            console.log(jsontransformed);
+            //console.log(test1);
 
-        //columnNameVar = "ColumnValues"
-        //var myFilterObj = {}
-        var data = {
-            'getData': 'fromDB'
-        }
-        console.log(textToSeacrh_var)
-
-        if (textToSeacrh_var != '') {
-            //data['title'] = $('#title').val()
-            //textToSeacrh: textToSeacrh_var
-            data['textToSeacrh'] = textToSeacrh_var
-        }
-        if (jsontransformed.length > 2) {
-            //data['title'] = $('#title').val()
-            //textToSeacrh: textToSeacrh_var
-            data['filters'] = jsontransformed
-        }
-        /*
-        $.post('/ajax/update-something', data, function (response) {
-            $('#template').html(response);
-        });
-        */
-
-        console.log(data)
-        return $.ajax({
-            //url: "/test6/testpost.php",
-            url: $TheLinkToApi,
-            method: "post",
-            data,
-            //data: { getData: "fromDB", textToSeacrh: textToSeacrh_var, filters: jsontransformed },
-            success: function (data) {
-                //myobjValues = JSON.parse(data)
-                //console.log(myobjValues)
-                //console.log(data)
-                console.log("...")
-                console.log(data)
-                console.log("...")
-
-                addResultToBoxes(data)
-                //var obj = myobjValues
-                FlagQueryToSQLFetched = true
+            //columnNameVar = "ColumnValues"
+            //var myFilterObj = {}
+            var data = {
+                'getData': 'fromDB'
             }
-        });
+            console.log(textToSeacrh_var)
 
-    }
-
-
-
-    var FlagColumnLookupNames = false
-
-    function ColumnLookupNames() {
-        //columnNameVar = "ColumnValues"
-        columnNameVar = "ColumnNames"
-        var myobjValues = {}
-        return $.ajax({
-            url: $TheLinkToApi,
-            method: "post",
-            data: { getData: columnNameVar },
-            success: function (data) {
-                myobjValues = JSON.parse(data)
-                //console.log(myobjValues)
-                console.log(myobjValues)
-                var obj = myobjValues
-                FlagColumnLookupNames = true
+            if (textToSeacrh_var != '') {
+                //data['title'] = $('#title').val()
+                //textToSeacrh: textToSeacrh_var
+                data['textToSeacrh'] = textToSeacrh_var
             }
-        });
-    }
-
-    function addBox(id, name, language, url, fork) {
-        //console.log("agregando school box")
-        //tothediv2 = '<div class=" row justify-content-between" id="' + uuidDelFiltro + '">'
-        schoolBoxDiv = '<div id="' + id + '" class="schoolCard">'
-        //console.log(tothediv2)
-        $('#DIO').append(
-
-            $(schoolBoxDiv).append(
-                //$('<img src="https://images.unsplash.com/uploads/1413259835094dcdeb9d3/6e609595?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c82fb4e7054d9fb4211938bf9431ccdf&auto=format&fit=crop&w=1952&q=80" />'),
-                //$('<img src="https://dummyimage.com/600x400/e038e0/e038e0" />'),
-                //$('<div class="mapouter"><div class="gmap_canvas"><iframe width="100%" id="gmap_canvas" src="https://maps.google.com/maps?q='+title+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>'),
-                $('<h3>' + name + '</h3>'),
-                $('<p>' + language + '</p>')
-            )
-
-        );
-        //addContentToFilters(uuidDelFiltro, myobj, "ColumnFilterDiv")
-    }
-
-
-    var myobjValues = {}
-
-    var myCurrentResult = []
-
-    function addReposToBoxes(jsonResponse) {
-        /*
-        console.log("Remove the last results")
-
-        for (let index = 0; index < myCurrentResult.length; index++) {
-            $tempItem = myCurrentResult[index]
-            console.log("Removing: " + $tempItem)
-            functionToRemoveLabel($tempItem)
-        }
-        console.log(myCurrentResult)
-        myCurrentResult.length = 0
-        console.log("adding Results To Boxes")
-
-        */
-        //console.log(jsonResponse)
-        //var toWork = JSON.parse(jsonResponse)
-        //var toWork = JSON.stringify(jsonResponse)
-        var toWork = JSON.parse(jsonResponse)
-        //console.log(toWork)
-
-        for (var i = 0; i < toWork.length; i++) {
-
-            $currentRepo = toWork[i].name
-            //console.log($currentRepo);
-            myCurrentResult.push($currentRepo)
-            //html_url
-            //language
-            //name
-            //addBox(toWork[i].CUE, toWork[i].Nombre, toWork[i].Domicilio)
-            addBox(
-                sha256(toWork[i].name),
-                toWork[i].name,
-                toWork[i].description,
-                toWork[i].language,
-                toWork[i].url,
-                toWork[i].fork,
-                toWork[i].stargazers_count)
-        }
-
-        //console.log(toWork[0]['Nombre'])
-        //addBox("12314","test title","test text")
-    }
-
-    function getRepos(user) {
-        $result = null;
-        $.ajax({
-            url: 'https://api.github.com/users/' + user + '/repos?direction=desc&sort=updated&type=all&per_page=1000',
-            success: function (respuesta) {
-                //console.log(respuesta);
-                $result = respuesta;
-                //$result = getRepos("lukaneco")
-                //return $result
-                addReposToBoxes(respuesta)
-
-            },
-            error: function () {
-                console.log("No se ha podido obtener la información");
+            if (jsontransformed.length > 2) {
+                //data['title'] = $('#title').val()
+                //textToSeacrh: textToSeacrh_var
+                data['filters'] = jsontransformed
             }
-        });
-    }
+            /*
+            $.post('/ajax/update-something', data, function (response) {
+                $('#template').html(response);
+            });
+            */
 
-    //getRepos("lukaneco");
-    function workWithRepos(params) {
-        $reponse = getRepos("lukaneco");
-        $reponse.forEach(element => {
-            console.log(element)
-        });
+            console.log(data)
+            return $.ajax({
+                //url: "/test6/testpost.php",
+                url: $TheLinkToApi,
+                method: "post",
+                data,
+                //data: { getData: "fromDB", textToSeacrh: textToSeacrh_var, filters: jsontransformed },
+                success: function (data) {
+                    //myobjValues = JSON.parse(data)
+                    //console.log(myobjValues)
+                    //console.log(data)
+                    console.log("...")
+                    console.log(data)
+                    console.log("...")
 
-    }
-
-
-    $(document).ready(function () {
-        var form = new FormData();
-        var settings = {
-            "url": "https://api.github.com/users/lukaneco/repos?direction=desc&sort=updated&type=all&per_page=1000",
-            "method": "GET",
-            "timeout": 0,
-            "processData": false,
-            "mimeType": "multipart/form-data",
-            "contentType": false,
-            "data": form
-        };
-
-        $.ajax(settings).done(function (response) {
-            //console.log(response);
-            addReposToBoxes(response)
-        });
-    })
-    //$("#div1").append("<b>"+getRepos("lukaneco")+"</b>");
-
-
-    function sha256(ascii) {
-        function rightRotate(value, amount) {
-            return (value >>> amount) | (value << (32 - amount));
-        };
-
-        var mathPow = Math.pow;
-        var maxWord = mathPow(2, 32);
-        var lengthProperty = 'length'
-        var i, j; // Used as a counter across the whole file
-        var result = ''
-
-        var words = [];
-        var asciiBitLength = ascii[lengthProperty] * 8;
-
-        //* caching results is optional - remove/add slash from front of this line to toggle
-        // Initial hash value: first 32 bits of the fractional parts of the square roots of the first 8 primes
-        // (we actually calculate the first 64, but extra values are just ignored)
-        var hash = sha256.h = sha256.h || [];
-        // Round constants: first 32 bits of the fractional parts of the cube roots of the first 64 primes
-        var k = sha256.k = sha256.k || [];
-        var primeCounter = k[lengthProperty];
-        /*/
-        var hash = [], k = [];
-        var primeCounter = 0;
-        //*/
-
-        var isComposite = {};
-        for (var candidate = 2; primeCounter < 64; candidate++) {
-            if (!isComposite[candidate]) {
-                for (i = 0; i < 313; i += candidate) {
-                    isComposite[i] = candidate;
+                    addResultToBoxes(data)
+                    //var obj = myobjValues
+                    FlagQueryToSQLFetched = true
                 }
-                hash[primeCounter] = (mathPow(candidate, .5) * maxWord) | 0;
-                k[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
+            });
+
+        }
+
+
+
+        var FlagColumnLookupNames = false
+
+        function ColumnLookupNames() {
+            //columnNameVar = "ColumnValues"
+            columnNameVar = "ColumnNames"
+            var myobjValues = {}
+            return $.ajax({
+                url: $TheLinkToApi,
+                method: "post",
+                data: { getData: columnNameVar },
+                success: function (data) {
+                    myobjValues = JSON.parse(data)
+                    //console.log(myobjValues)
+                    console.log(myobjValues)
+                    var obj = myobjValues
+                    FlagColumnLookupNames = true
+                }
+            });
+        }
+
+        function addBox(id, name, language, url, fork) {
+            //console.log("agregando school box")
+            //tothediv2 = '<div class=" row justify-content-between" id="' + uuidDelFiltro + '">'
+            CardBoxDiv = '<div id="' + id + '" class="card bg-light">'
+            CardContent = null
+            CardName = '<p class="card-text">' + name + '</p>'
+            CardContent = CardName
+            //console.log(tothediv2)
+            $('#DIO').append(
+
+                $(CardBoxDiv).append(
+                    //$('<img src="https://images.unsplash.com/uploads/1413259835094dcdeb9d3/6e609595?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c82fb4e7054d9fb4211938bf9431ccdf&auto=format&fit=crop&w=1952&q=80" />'),
+                    //$('<img src="https://dummyimage.com/600x400/e038e0/e038e0" />'),
+                    //$('<div class="mapouter"><div class="gmap_canvas"><iframe width="100%" id="gmap_canvas" src="https://maps.google.com/maps?q='+title+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>'),
+                    $('<div class="card-body text-center">').append(CardName)
+
+
+
+                )
+                /*
+                
+                    toWork[i].name,
+                    toWork[i].description,
+                    toWork[i].language,
+                    toWork[i].url,
+                    toWork[i].fork,
+                    toWork[i].stargazers_count)
+                */
+
+            );
+            //addContentToFilters(uuidDelFiltro, myobj, "ColumnFilterDiv")
+        }
+
+
+        var myobjValues = {}
+
+        var myCurrentResult = []
+
+        function addReposToBoxes(jsonResponse) {
+            /*
+            console.log("Remove the last results")
+    
+            for (let index = 0; index < myCurrentResult.length; index++) {
+                $tempItem = myCurrentResult[index]
+                console.log("Removing: " + $tempItem)
+                functionToRemoveLabel($tempItem)
             }
+            console.log(myCurrentResult)
+            myCurrentResult.length = 0
+            console.log("adding Results To Boxes")
+    
+            */
+            //console.log(jsonResponse)
+            //var toWork = JSON.parse(jsonResponse)
+            //var toWork = JSON.stringify(jsonResponse)
+            var toWork = JSON.parse(jsonResponse)
+            //console.log(toWork)
+
+            for (var i = 0; i < toWork.length; i++) {
+
+                $currentRepo = toWork[i].name
+                //console.log($currentRepo);
+                myCurrentResult.push($currentRepo)
+                //html_url
+                //language
+                //name
+                //addBox(toWork[i].CUE, toWork[i].Nombre, toWork[i].Domicilio)
+                addBox(
+                    sha256(toWork[i].name),
+                    toWork[i].name,
+                    toWork[i].description,
+                    toWork[i].language,
+                    toWork[i].url,
+                    toWork[i].fork,
+                    toWork[i].stargazers_count)
+            }
+
+            //console.log(toWork[0]['Nombre'])
+            //addBox("12314","test title","test text")
         }
 
-        ascii += '\x80' // Append Ƈ' bit (plus zero padding)
-        while (ascii[lengthProperty] % 64 - 56) ascii += '\x00' // More zero padding
-        for (i = 0; i < ascii[lengthProperty]; i++) {
-            j = ascii.charCodeAt(i);
-            if (j >> 8) return; // ASCII check: only accept characters in range 0-255
-            words[i >> 2] |= j << ((3 - i) % 4) * 8;
+        function getRepos(user) {
+            $result = null;
+            $.ajax({
+                url: 'https://api.github.com/users/' + user + '/repos?direction=desc&sort=updated&type=all&per_page=1000',
+                success: function (respuesta) {
+                    //console.log(respuesta);
+                    $result = respuesta;
+                    //$result = getRepos("lukaneco")
+                    //return $result
+                    addReposToBoxes(respuesta)
+
+                },
+                error: function () {
+                    console.log("No se ha podido obtener la información");
+                }
+            });
         }
-        words[words[lengthProperty]] = ((asciiBitLength / maxWord) | 0);
-        words[words[lengthProperty]] = (asciiBitLength)
 
-        // process each chunk
-        for (j = 0; j < words[lengthProperty];) {
-            var w = words.slice(j, j += 16); // The message is expanded into 64 words as part of the iteration
-            var oldHash = hash;
-            // This is now the undefinedworking hash", often labelled as variables a...g
-            // (we have to truncate as well, otherwise extra entries at the end accumulate
-            hash = hash.slice(0, 8);
+        //getRepos("lukaneco");
+        function workWithRepos(params) {
+            $reponse = getRepos("lukaneco");
+            $reponse.forEach(element => {
+                console.log(element)
+            });
 
-            for (i = 0; i < 64; i++) {
-                var i2 = i + j;
-                // Expand the message into 64 words
-                // Used below if 
-                var w15 = w[i - 15], w2 = w[i - 2];
+        }
 
-                // Iterate
-                var a = hash[0], e = hash[4];
-                var temp1 = hash[7]
-                    + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) // S1
-                    + ((e & hash[5]) ^ ((~e) & hash[6])) // ch
-                    + k[i]
-                    // Expand the message schedule if needed
-                    + (w[i] = (i < 16) ? w[i] : (
-                        w[i - 16]
-                        + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3)) // s0
-                        + w[i - 7]
-                        + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10)) // s1
-                    ) | 0
-                    );
-                // This is only used once, so *could* be moved below, but it only saves 4 bytes and makes things unreadble
-                var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) // S0
-                    + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2])); // maj
 
-                hash = [(temp1 + temp2) | 0].concat(hash); // We don't bother trimming off the extra ones, they're harmless as long as we're truncating when we do the slice()
-                hash[4] = (hash[4] + temp1) | 0;
+        $(document).ready(function () {
+            var form = new FormData();
+            var settings = {
+                "url": "https://api.github.com/users/lukaneco/repos?direction=desc&sort=updated&type=all&per_page=1000",
+                "method": "GET",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+
+            $.ajax(settings).done(function (response) {
+                //console.log(response);
+                addReposToBoxes(response)
+            });
+        })
+        //$("#div1").append("<b>"+getRepos("lukaneco")+"</b>");
+
+
+        function sha256(ascii) {
+            function rightRotate(value, amount) {
+                return (value >>> amount) | (value << (32 - amount));
+            };
+
+            var mathPow = Math.pow;
+            var maxWord = mathPow(2, 32);
+            var lengthProperty = 'length'
+            var i, j; // Used as a counter across the whole file
+            var result = ''
+
+            var words = [];
+            var asciiBitLength = ascii[lengthProperty] * 8;
+
+            //* caching results is optional - remove/add slash from front of this line to toggle
+            // Initial hash value: first 32 bits of the fractional parts of the square roots of the first 8 primes
+            // (we actually calculate the first 64, but extra values are just ignored)
+            var hash = sha256.h = sha256.h || [];
+            // Round constants: first 32 bits of the fractional parts of the cube roots of the first 64 primes
+            var k = sha256.k = sha256.k || [];
+            var primeCounter = k[lengthProperty];
+            /*/
+            var hash = [], k = [];
+            var primeCounter = 0;
+            //*/
+
+            var isComposite = {};
+            for (var candidate = 2; primeCounter < 64; candidate++) {
+                if (!isComposite[candidate]) {
+                    for (i = 0; i < 313; i += candidate) {
+                        isComposite[i] = candidate;
+                    }
+                    hash[primeCounter] = (mathPow(candidate, .5) * maxWord) | 0;
+                    k[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
+                }
+            }
+
+            ascii += '\x80' // Append Ƈ' bit (plus zero padding)
+            while (ascii[lengthProperty] % 64 - 56) ascii += '\x00' // More zero padding
+            for (i = 0; i < ascii[lengthProperty]; i++) {
+                j = ascii.charCodeAt(i);
+                if (j >> 8) return; // ASCII check: only accept characters in range 0-255
+                words[i >> 2] |= j << ((3 - i) % 4) * 8;
+            }
+            words[words[lengthProperty]] = ((asciiBitLength / maxWord) | 0);
+            words[words[lengthProperty]] = (asciiBitLength)
+
+            // process each chunk
+            for (j = 0; j < words[lengthProperty];) {
+                var w = words.slice(j, j += 16); // The message is expanded into 64 words as part of the iteration
+                var oldHash = hash;
+                // This is now the undefinedworking hash", often labelled as variables a...g
+                // (we have to truncate as well, otherwise extra entries at the end accumulate
+                hash = hash.slice(0, 8);
+
+                for (i = 0; i < 64; i++) {
+                    var i2 = i + j;
+                    // Expand the message into 64 words
+                    // Used below if 
+                    var w15 = w[i - 15], w2 = w[i - 2];
+
+                    // Iterate
+                    var a = hash[0], e = hash[4];
+                    var temp1 = hash[7]
+                        + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) // S1
+                        + ((e & hash[5]) ^ ((~e) & hash[6])) // ch
+                        + k[i]
+                        // Expand the message schedule if needed
+                        + (w[i] = (i < 16) ? w[i] : (
+                            w[i - 16]
+                            + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3)) // s0
+                            + w[i - 7]
+                            + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10)) // s1
+                        ) | 0
+                        );
+                    // This is only used once, so *could* be moved below, but it only saves 4 bytes and makes things unreadble
+                    var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) // S0
+                        + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2])); // maj
+
+                    hash = [(temp1 + temp2) | 0].concat(hash); // We don't bother trimming off the extra ones, they're harmless as long as we're truncating when we do the slice()
+                    hash[4] = (hash[4] + temp1) | 0;
+                }
+
+                for (i = 0; i < 8; i++) {
+                    hash[i] = (hash[i] + oldHash[i]) | 0;
+                }
             }
 
             for (i = 0; i < 8; i++) {
-                hash[i] = (hash[i] + oldHash[i]) | 0;
+                for (j = 3; j + 1; j--) {
+                    var b = (hash[i] >> (j * 8)) & 255;
+                    result += ((b < 16) ? 0 : '') + b.toString(16);
+                }
             }
-        }
-
-        for (i = 0; i < 8; i++) {
-            for (j = 3; j + 1; j--) {
-                var b = (hash[i] >> (j * 8)) & 255;
-                result += ((b < 16) ? 0 : '') + b.toString(16);
-            }
-        }
-        return result;
-    };
-</script>
+            return result;
+        };
+    </script>
 </head>
-<body> 
- 
-<div class="container">
-  <h2>Cards Columns</h2>
-  <p>The .card-columns class creates a masonry-like grid of cards. The layout will automatically adjust as you insert more cards.</p>
-  <p><strong>Note:</strong> The cards are displayed vertically on small screens (less than 576px):</p>
-  <div class="card-columns">
-    <div class="card bg-primary">
-      <div class="card-body text-center">
-        <p class="card-text">Some text inside the first card</p>
-      </div>
-    </div>
-    <div class="card bg-warning">
-      <div class="card-body text-center">
-        <p class="card-text">Some text inside the second card</p>
-      </div>
-    </div>
-    <div class="card bg-success">
-      <div class="card-body text-center">
-        <p class="card-text">Some text inside the third card</p>
-      </div>
-    </div>
-    <div class="card bg-danger">
-      <div class="card-body text-center">
-        <p class="card-text">Some text inside the fourth card</p>
-      </div>
-    </div>  
-    <div class="card bg-light">
-      <div class="card-body text-center">
-        <p class="card-text">Some text inside the fifth card</p>
-      </div>
-    </div>
-    <div class="card bg-info">
-      <div class="card-body text-center">
-        <p class="card-text">Some text inside the sixth card</p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div id="DIO"></div>
+<body>
+
+    <div class="container">
+        <h2>Cards Columns</h2>
+        <p>The .card-columns class creates a masonry-like grid of cards. The layout will automatically adjust as you
+            insert more cards.</p>
+        <p><strong>Note:</strong> The cards are displayed vertically on small screens (less than 576px):</p>
+        <div id="DIO" class="card-columns">
+            <div class="card bg-primary">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the first card</p>
+                </div>
+            </div>
+            <div class="card bg-warning">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the second card</p>
+                </div>
+            </div>
+            <div class="card bg-success">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the third card</p>
+                </div>
+            </div>
+            <div class="card bg-danger">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the fourth card</p>
+                </div>
+            </div>
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the fifth card</p>
+                </div>
+            </div>
+            <div class="card bg-info">
+                <div class="card-body text-center">
+                    <p class="card-text">Some text inside the sixth card</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="DIO"></div>
 </body>
+
 </html>
