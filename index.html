@@ -10,7 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="school-card.css">
     <link rel="stylesheet" href="work-cards.css">
     <link rel="stylesheet" href="colores.css">
@@ -82,7 +84,6 @@
     </style>
 
 
-    
 </head>
 
 <body class="color_1">
@@ -292,6 +293,8 @@
                                     <p class="texto-p">
                                         Es una escuela secundaria pública de educación técnica. Está ubicada en la calle
                                         Cuba 2410 en la Ciudad Autónoma de Buenos Aires
+                                        <a target="_blank" rel="noopener noreferrer" href="https://www.et28.net/">Más
+                                            información</a>
                                     </p>
                                 </div>
                             </div>
@@ -301,7 +304,7 @@
                         <div class="card-text-master row boxlayout">
 
                             <div class="gg1 test2 col-sm-2 col-md-2 bg-success pb-5">
-                                <h1 class="test card-text">2013-2018</h1>
+                                <h1 class="test card-text">2019-Now</h1>
                             </div>
 
                             <div class="col-sm-10 col-md-10 color_4">
@@ -315,12 +318,13 @@
                                 </div>
                                 <div class="color_3_font">
                                     <p class="texto-p">
-                                        A lo largo de dos años, los jóvenes cursan sus carreras combinando bloques
-                                        prácticos (rotación por distintos sectores dentro de la empresa capacitadora),
-                                        con bloques teóricos (asistencia a clases en el instituto de capacitación).
-                                        Aprobando los exámenes bianuales, los jóvenes reciben un título terciario
-                                        reconocido por la Unión Europea. Gracias a la coordinación de la AHK Argentina,
-                                        el Sistema Dual cuenta con más de 40 años en el país.
+                                        Es una formacion profecional que consta de cursar combinando bloques
+                                        prácticos (rotación por distintos sectores dentro de la empresa
+                                        capacitadora),con bloques teóricos (asistencia a clases en el instituto de
+                                        capacitación)
+                                        <a target="_blank" rel="noopener noreferrer"
+                                            href="https://www.ahkargentina.com.ar/formaciones/sistema-dual-aleman/tecnicatura-en-sistemas-it/">Más
+                                            información</a>
                                     </p>
                                 </div>
                             </div>
@@ -373,6 +377,8 @@
                                     suscipit ut id ab
                                     laborum incidunt natus. Fuga aut nihil perferendis voluptas qui mollitia
                                     consequuntur</p>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://panoramaaudiovisuales.com/">Más información</a>
                             </div>
                         </div>
                     </div>
@@ -411,6 +417,8 @@
                                     suscipit ut id ab
                                     laborum incidunt natus. Fuga aut nihil perferendis voluptas qui mollitia
                                     consequuntur</p>
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.sudamerica.boehringer-ingelheim.com/">Más información</a>
                             </div>
                         </div>
                     </div>
@@ -525,12 +533,12 @@
 
 
             if (win.width() <= 558) {
-                console.log("Extra Small Screen"+" - width : "+win.width())
+                console.log("Extra Small Screen" + " - width : " + win.width())
                 //$(".gg1").removeClass("pb-5");
                 $(".gg1").children('h1').removeClass("test");
             }
-            else{
-                console.log("Extra Big Screen"+" - width : "+win.width())
+            else {
+                console.log("Extra Big Screen" + " - width : " + win.width())
                 // do something for huge screens
                 //$(".gg1").addClass("pb-5");
                 $(".gg1").children('h1').addClass("test");
